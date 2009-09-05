@@ -14,6 +14,7 @@
 <div id="top_navigation">
   <ul>
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Products Admin", products_path %></li>
     <% if current_user %>
       <li>Logged in as <%= current_user.login %></li>
       <li><%= link_to "Logout", logout_path %></li>
