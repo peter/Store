@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :name
   
   has_many :images, :as => :has_image
+  has_many :comments
   
   private
   

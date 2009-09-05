@@ -84,4 +84,12 @@ class ImagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def ajax_destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    render :update do |page|
+      page[@image.dom_id].hide
+    end
+  end
 end

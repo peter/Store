@@ -19,10 +19,47 @@
 </p>
 
 <p>
-  <b>Image:</b>
-  <%= image_tag(@product.images.first.image.url) %>
+  <b>Images:</b>
 </p>
 
+<% if @product.images.present? %>
+  <ul>
+    <% @product.images.each do |image| %>
+      <li><%= image_tag(image.image.url) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>
+    No images
+  </p>
+<% end %>
 
+<p>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+</p>
+
+<h2>Fake AJAX Comments</h2>
+
+<div id="comment_list">
+  <%= render :partial => 'comment', :collection => @product.comments %>
+</div>
+
+
+<% remote_form_for :comment, @product.comments.build,
+  :url => product_create_comment_path(@product), 
+                    :html => {:id=>"comment_form"},
+                    :loading => "$('spinner').show()",
+                    :complete => "$('spinner').hide()" do |f| %>
+
+  <div id="comment_confirm"></div>
+
+  <div>
+	  <label for="comment_body">Comment</label><br />
+    <%= f.text_area "body", :cols => 80 %>
+  </div>
+
+  <div style="margin-top: 10px">
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>

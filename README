@@ -4,8 +4,14 @@ http://github.com/peter/rails-on-ubuntu/tree/master
 *** Mod Rails
 - First install Ruby Enterprise
 - Then install mod rails
+- Configuration, remember to set: PassengerUseGlobalQueue on
 
 *** Production monitoring etc.
 Hoptoad
 RPM New Relic
 http://pingdom.com/
+
+*** Capistrano
+Configuration in config/deploy.rb
+Example tasks, database backup etc. in doc/example-deploy.rb
+

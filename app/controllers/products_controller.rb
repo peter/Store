@@ -85,4 +85,24 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def create_comment
+    @product = Product.find(params[:id])
+    @comment = @product.comments.build(params[:comment])
+    if @comment.save
+      render :update do |page|
+        page.insert_html :bottom, 'comment_list', :partial => 'comment', :object => @comment
+        page.replace_html 'comment_confirm', 'Comment submitted'
+        page['comment_confirm'].highlight(:slow)
+        page['comment_form'].reset
+      end
+    else
+      render :update do |page|
+        page.replace_html 'comment_confirm', ''
+        page.alert "Could not add comment for the following reasons:\n" + 
+          @comment.errors.full_messages.map {|m| "* #{m}"}.join("\n") + 
+          "\nPlease change your input and submit the form again."
+      end
+    end
+  end
 end

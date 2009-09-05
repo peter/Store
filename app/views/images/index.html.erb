@@ -5,11 +5,14 @@
   </tr>
 
 <% @images.each do |image| %>
-  <tr>
+  <tr id="<%= image.dom_id %>">
     <td><%= image_tag(image.image.url(:thumb)) %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
-    <td><%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to_remote 'Destroy', :url => images_ajax_destroy_path(image),
+        :confirm => 'Are you sure?' %>
+    </td>
   </tr>
 <% end %>
 </table>
