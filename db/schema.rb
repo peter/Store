@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090905075348) do
+ActiveRecord::Schema.define(:version => 20090905084836) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -17,6 +17,25 @@ ActiveRecord::Schema.define(:version => 20090905075348) do
     t.integer  "price",       :limit => 10, :precision => 10, :scale => 0
     t.integer  "quantity"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "login",               :default => "", :null => false
+    t.string   "email",               :default => "", :null => false
+    t.string   "crypted_password",    :default => "", :null => false
+    t.string   "password_salt",       :default => "", :null => false
+    t.string   "persistence_token",   :default => "", :null => false
+    t.string   "single_access_token", :default => "", :null => false
+    t.string   "perishable_token",    :default => "", :null => false
+    t.integer  "login_count",         :default => 0,  :null => false
+    t.integer  "failed_login_count",  :default => 0,  :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
