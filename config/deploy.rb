@@ -15,4 +15,15 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
+
+  desc "Copy in server specific configuration files and setup symlinks to shared files"
+  task :setup_shared do
+    run <<-END
+      ln -s #{shared_path}/files #{release_path}/public
+    END
+  end
+
+  task :after_update_code, :roles => :app do
+     setup_shared
+   end
 end
