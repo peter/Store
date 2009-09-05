@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options(:controller => 'products') do |m|
     m.product_create_comment 'products/:id/create_comment', :action => 'create_comment'
+    m.product_create_image 'products/:id/create_image', :action => 'create_image'
   end
   
   map.with_options(:controller => 'home') do |m|

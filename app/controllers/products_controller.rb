@@ -91,6 +91,7 @@ class ProductsController < ApplicationController
     @comment = @product.comments.build(params[:comment])
     if @comment.save
       render :update do |page|
+        page['no_comments'].hide
         page.insert_html :bottom, 'comment_list', :partial => 'comment', :object => @comment
         page.replace_html 'comment_confirm', 'Comment submitted'
         page['comment_confirm'].highlight(:slow)
@@ -103,6 +104,18 @@ class ProductsController < ApplicationController
           @comment.errors.full_messages.map {|m| "* #{m}"}.join("\n") + 
           "\nPlease change your input and submit the form again."
       end
+    end
+  end
+  
+  def create_image
+    @product = Product.find(params[:id])
+    @image = @product.images.build(params[:image])
+    if @image.save
+      flash[:notice] = "Image added"
+      redirect_to @product
+    else
+      flash[:notice] = "Image could not be added: #{@image.errors.full_messages}"
+      redirect_to @product      
     end
   end
 end

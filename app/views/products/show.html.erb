@@ -18,19 +18,26 @@
   <%=h @product.quantity %>
 </p>
 
-<p>
-  <b>Images:</b>
-</p>
+<h2>Fake Images</h2>
 
 <% if @product.images.present? %>
-  <ul>
+  <ul id="images-list">
     <% @product.images.each do |image| %>
-      <li><%= image_tag(image.image.url) %></li>
+      <li><%= image_tag(image.image.url(:thumb)) %></li>
     <% end %>
   </ul>
 <% else %>
   <p>
     No images
+  </p>
+<% end %>
+
+<% form_for(:image, :url => product_create_image_path(@product),
+  :html => {:multipart => true}) do |f| %>
+  <%= f.file_field :image %>      
+
+  <p>
+    <%= f.submit 'Create' %>
   </p>
 <% end %>
 
@@ -45,6 +52,12 @@
   <%= render :partial => 'comment', :collection => @product.comments %>
 </div>
 
+<% if @product.comments.blank? %>
+  <p id="no_comments">
+    No comments
+  </p>
+<% end %>
+
 
 <% remote_form_for :comment, @product.comments.build,
   :url => product_create_comment_path(@product), 
@@ -56,7 +69,7 @@
 
   <div>
 	  <label for="comment_body">Comment</label><br />
-    <%= f.text_area "body", :cols => 80 %>
+    <%= f.text_area "body", :cols => 80, :rows => 5 %>
   </div>
 
   <div style="margin-top: 10px">

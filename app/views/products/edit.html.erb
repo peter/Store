@@ -19,7 +19,6 @@
     <%= f.label :quantity %><br />
     <%= f.text_field :quantity %>
   </p>
-  <%= render :partial => '/images/form', :locals => {:f => f, :image => @product.images.first} %>
   <p>
     <%= f.submit 'Update' %>
   </p>
