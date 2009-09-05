@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :products
+  map.resources :images
   
   map.with_options(:controller => 'home') do |m|
     m.root :action => "index", :controller => "home"
@@ -13,6 +14,5 @@ ActionController::Routing::Routes.draw do |map|
     m.login 'login', :action => "new"
     m.logout 'logout', :action => "destroy"
   end
-
   map.register 'register', :controller => "users", :action => "new"
 end
