@@ -2,3 +2,4 @@ log/*
 spec/spec_report.html
 *~
 tmp
+public/images

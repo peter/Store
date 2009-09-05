@@ -1,6 +1,6 @@
 <h1>New product</h1>
 
-<% form_for(@product) do |f| %>
+<% form_for(@product, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -19,10 +19,8 @@
     <%= f.label :quantity %><br />
     <%= f.text_field :quantity %>
   </p>
-  <p>
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </p>
+
+  <%= render :partial => '/images/form', :locals => {:f => f, :image => @image} %>
   <p>
     <%= f.submit 'Create' %>
   </p>

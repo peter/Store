@@ -20,7 +20,7 @@
 
 <p>
   <b>Image:</b>
-  <%=h @product.image %>
+  <%= image_tag(@product.images.first.image.url) %>
 </p>
 
 

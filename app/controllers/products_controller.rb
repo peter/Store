@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    @image = @product.images.build
 
     respond_to do |format|
       format.html # new.html.erb

@@ -12,9 +12,33 @@ describe Product do
   describe "creating" do
     it "with a name" do
       lambda {
-        product = Product.create(:name => "My product")
-        product.reload.name.should == "My product"        
+        create_product
+        @product.reload.name.should == "My product"        
       }.should change(Product, :count).by(1)
     end    
+  end
+  
+  describe "images" do
+    before(:each) do
+      create_product
+    end
+    
+    it "can be added" do
+      lambda {
+        image = @product.images.create
+        @product.reload.images.count.should == 1
+        @product.images.should include(image)
+      }.should change(Image, :count).by(1)
+    end
+  end
+  
+  ###########################################
+  #
+  # Helper methods
+  #
+  ###########################################
+  
+  def create_product
+    @product = Product.create(:name => "My product")    
   end
 end

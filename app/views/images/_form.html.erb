@@ -2,8 +2,8 @@
   <b><%=h "Image File"[:image_image] %></b><br/>
 
   <% if image && image.image_file_name %>
-    <%= link_to_new_window(image_tag(image.image.url(:thumb)), image.image.url) %><br/>
-    <%= link_to_new_window(h(image.image_file_name), image.image.url) %><br/>
+    <%= image_tag(image.image.url(:thumb)) %><br/>
+    <%= h(image.image_file_name) %><br/>
   <% end %>
 
   <%= f.file_field :image %>      
