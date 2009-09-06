@@ -4,8 +4,8 @@
   <tr>
     <th>Title</th>
     <th>Body</th>
-    <th>Menu builder</th>
     <th>Author</th>
+	<th>Menu Item</th>	
   </tr>
 
 <% @contents.each do |content| %>
@@ -13,6 +13,7 @@
     <td><%=h content.title %></td>
     <td><%=h content.body %></td>
     <td><%=h content.author.login %></td>
+	<td><%=h content.menu.name if content.menu.present? %></td>
     <td><%= link_to 'Show', content %></td>
     <td><%= link_to 'Edit', edit_content_path(content) %></td>
     <td><%= link_to 'Destroy', content, :confirm => 'Are you sure?', :method => :delete %></td>
