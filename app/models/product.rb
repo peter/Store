@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   
   has_many :images, :as => :has_image
   has_many :comments
+  has_many :orders, :through => :line_items
   
   private
   

@@ -1,0 +1,3 @@
+<% @cart.content.each do |product_id, q| %>
+<p><%= Product.find(product_id).name %> |<%= q %></p>
+<% end %>

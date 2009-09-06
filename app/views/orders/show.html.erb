@@ -1,0 +1,18 @@
+<p>
+  <b>Customer:</b>
+  <%=h @order.customer_id %>
+</p>
+
+<p>
+  <b>Concluded:</b>
+  <%=h @order.concluded %>
+</p>
+<ul>
+<% @line_items.each do |litem|  %>
+	<li><%= litem.product.name %> | <%= litem.product.price %> </li>
+<% end  %>
+</ul>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

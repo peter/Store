@@ -1,1 +1,21 @@
-This is the homepage
+<div style ="border:1px solid black; width:300px; float:right; padding:5px;">
+	<h3>Shopping Cart</h3>
+	<div id="cart">
+		<!-- da riempiere con i line items -->
+	</div>
+</div>
+
+<h1>Our Products</h1>
+<% @products.each do |product| %>
+<tr>
+    <td><%=h product.name %></td>
+    <td><%=h product.description %></td>
+    <td><%=h product.price %></td>
+    <td><%=h product.quantity %></td>
+    <td><%= image_tag(product.images.first.image.url(:thumb)) if product.images.present? %></td>
+    <td><% form_remote_tag :url => {:action => 'add_to_cart', :id => product.id} do %>
+			<%= submit_tag "Add to cart" %>
+		<% end  %>
+	</td>
+</tr>  
+<% end %>

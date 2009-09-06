@@ -1,6 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :customers
+
+  map.resources :line_items
+
+  map.resources :line_items
+
+  map.resources :line_items
+
+  map.resources :orders
+
+  map.resources :orders
+
+  map.resources :orders
+
   map.resources :products
   map.resources :images
+  
+  map.with_options(:controller => 'home') do |m|
+    m.add_to_cart '/add_to_cart/:id/', :action => 'add_to_cart'
+  end
+  
 
   map.with_options(:controller => 'products') do |m|
     m.product_create_comment 'products/:id/create_comment', :action => 'create_comment'

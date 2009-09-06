@@ -1,0 +1,20 @@
+<h1>Editing order</h1>
+
+<% form_for(@order) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, @customer_options %>
+  </p>
+  <p>
+    <%= f.label :concluded %><br />
+    <%= f.check_box :concluded %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @order %> |
+<%= link_to 'Back', orders_path %>
