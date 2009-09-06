@@ -3,15 +3,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :line_items
 
-  map.resources :line_items
-
-  map.resources :line_items
-
   map.resources :orders
 
-  map.resources :orders
+  map.resources :menus
 
-  map.resources :orders
+  map.resources :contents
 
   map.resources :products
   map.resources :images

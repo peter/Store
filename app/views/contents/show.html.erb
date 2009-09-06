@@ -1,0 +1,24 @@
+<p>
+  <b>Title:</b>
+  <%=h @content.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @content.body %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%=h @content.author.login %>
+</p>
+<% if @content.menu.present? %>
+<p>
+  <b>Menu Item:</b>
+  <%=h @content.menu.name %>
+</p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

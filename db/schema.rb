@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(:version => 20090906113952) do
     t.datetime "updated_at"
   end
 
+  create_table "contents", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "menu_id"
+  end
+
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -46,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20090906113952) do
   create_table "line_items", :force => true do |t|
     t.integer  "order_id"
     t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menus", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
