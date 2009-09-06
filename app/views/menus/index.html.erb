@@ -10,7 +10,7 @@
 <% @menus.each do |menu| %>
   <tr>
     <td><%=h menu.name %></td>
-    <td><%=h menu.parent_id %></td>
+    <td><%=h menu.ancestors.first.name if menu.ancestors.present? %></td>
     <td><%= link_to 'Show', menu %></td>
     <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
     <td><%= link_to 'Destroy', menu, :confirm => 'Are you sure?', :method => :delete %></td>

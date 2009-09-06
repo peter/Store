@@ -5,7 +5,7 @@
 
 <p>
   <b>Parent:</b>
-  <%=h @menu.parent_id %>
+  <%=h @menu.ancestors.first.name if @menu.ancestors.present? %>
 </p>
 
 

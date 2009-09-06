@@ -1,0 +1,17 @@
+- has_many :through
+- include AuthenticatedSystem should only be included in ApplicationController
+- Private and public methods in controllers
+- find(:all) and all()
+- Indentation in views, long lines
+- Avoid logic in views, setup data in controllers, use helpers
+- Error messages remote forms
+- operations/index: present?
+- multiple named scopes or merge_conditions
+
+def published_items
+  scopes = [media_association_name, :published]
+  scopes << events_scope if media_class == Event
+  scopes.inject(@pressroom) { |source, scope| source.send(scope) }
+end
+
+- admin controller pattern
