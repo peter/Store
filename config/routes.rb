@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :menus
+
+  map.resources :contents
   map.resources :products
   map.resources :images
 

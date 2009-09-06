@@ -17,6 +17,8 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Products Admin", products_path %></li>
       <li><%= link_to "Images Admin", images_path %></li>
+	  <li><%= link_to "Contents Admin", contents_path %></li>
+	  <li><%= link_to "Menus Admin", menus_path %></li>
     <% if current_user %>
       <li>Logged in as <%= current_user.login %></li>
       <li><%= link_to "Logout", logout_path %></li>
