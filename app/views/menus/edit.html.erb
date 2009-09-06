@@ -7,10 +7,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
-  </p>
+  <%= render :partial => "hyerarchy", :locals => {:f => f} %>
   <p>
     <%= f.submit 'Update' %>
   </p>
